@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wilder | WilderCode</title>
+<meta name="description" content="WilderCode — serious tools for serious creatives.">
+<link rel="icon" type="image/png" href="assets/wilder-logo.png">
+<style>
+  :root {
+    --cream: #faf8f2;
+    --cream-deep: #f2efe4;
+    --ink: #26291f;
+    --ink-soft: #4a4d3f;
+    --leaf-dark: #5c7a3d;
+    --leaf-mid: #7a9c4e;
+    --leaf-light: #a9c76f;
+    --orange: #d97a2b;
+    --orange-soft: #f0dcc4;
+    --line: #dedad0;
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--leaf-dark); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---- background texture: soft topographic-ish lines ---- */
+  .bg-texture {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(122,156,78,0.08), transparent 45%),
+      radial-gradient(circle at 88% 82%, rgba(92,122,61,0.08), transparent 50%);
+    pointer-events: none;
+  }
+
+  header {
+    padding: 56px 0 28px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand img {
+    width: 92px;
+    height: 92px;
+    display: block;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .brand-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+  }
+
+  .brand-sub {
+    font-size: 0.82rem;
+    color: var(--leaf-dark);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  main { padding-bottom: 48px; }
+
+  .hero {
+    padding: 40px 0 40px;
+  }
+
+  .w-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .w-divider .line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .w-divider .mark {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .w-divider .mark img {
+    width: 22px;
+    height: auto;
+    display: block;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4.5vw, 2.9rem);
+    line-height: 1.2;
+    margin: 0 0 20px;
+    max-width: 15ch;
+  }
+
+  .hero p {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0 0 12px;
+  }
+
+  .leaf-rule {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 28px 0 0;
+    color: var(--leaf-mid);
+  }
+
+  .leaf-rule svg { width: 18px; height: 18px; }
+  .leaf-rule span {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--leaf-dark);
+  }
+
+  section.block {
+    padding: 40px 0;
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--leaf-dark);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    margin: 0 0 18px;
+  }
+
+  .about-text {
+    max-width: 62ch;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+  }
+
+  .about-text p { margin: 0 0 16px; }
+
+  .project-card {
+    border: 1px solid var(--line);
+    background: var(--cream-deep);
+    border-radius: 10px;
+    padding: 26px 28px;
+    max-width: 62ch;
+  }
+
+  .project-card h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+
+  .project-card p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+
+  .project-card .tag {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 0.76rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--leaf-mid);
+    border: 1px solid var(--leaf-light);
+    border-radius: 999px;
+    padding: 4px 12px;
+  }
+
+  .project-card .tag.live {
+    color: var(--orange);
+    border-color: var(--orange);
+    background: var(--orange-soft);
+  }
+
+  .project-card + .project-card { margin-top: 18px; }
+
+  .project-card .visit {
+    display: inline-block;
+    margin-top: 14px;
+    margin-left: 10px;
+    font-size: 0.9rem;
+    color: var(--orange);
+    border-bottom: 1px solid var(--orange);
+  }
+
+  .project-card .shot {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 22px;
+    max-width: 72ch;
+  }
+
+  .principle h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    margin: 0 0 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .principle h3 .num {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  .principle p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 640px) {
+    .principles { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  .contact-text {
+    color: var(--ink-soft);
+    max-width: 56ch;
+  }
+
+  .contact-email {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--leaf-dark);
+    border-bottom: 1px solid var(--leaf-light);
+  }
+
+  footer {
+    padding: 32px 0 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  footer a { color: var(--ink-soft); }
+
+  .footer-links {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+  }
+
+  @media (max-width: 520px) {
+    header { padding: 40px 0 20px; }
+    .hero { padding: 32px 0 40px; }
+    section.block { padding: 40px 0; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-texture"></div>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <img src="assets/wilder-logo.png" alt="Wilder logo">
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Serious tools for serious creatives.</h1>
+      <p>
+        WilderCode builds software for people who take their craft
+        seriously — songwriters chasing the right rhyme, writers and editors who
+        live at the keyboard, anyone whose work depends on precision, not novelty.
+      </p>
+      <p>
+        Inspired by nature — permaculture in particular, which designs systems
+        that work with existing patterns instead of against them. Each tool is
+        built end to end, kept quiet and efficient under the hood, and designed
+        to earn a permanent place in a real creative process rather than get
+        tried once and forgotten.
+      </p>
+      <div class="leaf-rule">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C7 4 4 8 4 13c0 4 3.5 7 8 7s8-3 8-7c0-5-3-9-8-11z" fill="currentColor" opacity="0.85"/>
+        </svg>
+        <span>Currently building, one release at a time</span>
+      </div>
+    </section>
+
+    <div class="w-divider" role="separator" aria-hidden="true">
+      <span class="line"></span>
+      <span class="mark"><img src="assets/wilder-mark.png" alt="Wilder leaf mark"></span>
+      <span class="line"></span>
+    </div>
+
+    <section class="block" id="principles">
+      <div class="eyebrow">How we build</div>
+      <h2>Simple. Intuitive. Beautiful. Inclusive.</h2>
+      <div class="principles">
+        <div class="principle">
+          <h3><span class="num">01</span> Simple</h3>
+          <p>
+            The minimal complexity that solves the problem elegantly — never
+            the terse version, just the uncluttered one.
+          </p>
+        </div>
+        <div class="principle">
+          <h3><span class="num">02</span> Intuitive</h3>
+          <p>
+            The interface matches the mental model, so using it relies on
+            understanding, not memorization — that's what actually saves
+            time and conserves energy.
+          </p>
+        </div>
+        <div class="principle">
+          <h3><span class="num">03</span> Beautiful</h3>
+          <p>
+            Aesthetics matter. We hold to solid UI/UX principles across every
+            design, so the tool aligns with the model — form following
+            function, not fighting it.
+          </p>
+        </div>
+        <div class="principle">
+          <h3><span class="num">04</span> Inclusive</h3>
+          <p>
+            We aim for inclusivity in every UI/UX decision — everyone matters,
+            and the door is open to all.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="w-divider" role="separator" aria-hidden="true">
+      <span class="line"></span>
+      <span class="mark"><img src="assets/wilder-mark.png" alt="Wilder leaf mark"></span>
+      <span class="line"></span>
+    </div>
+
+    <section class="block" id="work">
+      <div class="eyebrow">Projects</div>
+      <h2>What's growing</h2>
+      <div class="project-card">
+        <img class="shot" src="assets/wilderrhymes-screenshot.png" alt="Wilder Rhymes rhyme dictionary showing search results for the word heart">
+        <h3>Wilder Rhymes</h3>
+        <p>
+          A rhyming dictionary built for songwriters and lyricists — search by sound,
+          not spelling, with every match graded by closure, stress, and part of
+          speech, based on Pat Pattison's Berklee rhyme methodology.
+        </p>
+        <span class="tag live">Early Release</span>
+        <a class="visit" href="https://www.wilderrhymes.com" target="_blank" rel="noopener">wilderrhymes.com &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <h3>New work is in progress</h3>
+        <p>
+          I'm heads-down on the next release from the studio. Projects will appear
+          here as they're ready to share — check back soon, or reach out below if
+          you'd like to hear when something new lands.
+        </p>
+        <span class="tag">More soon</span>
+      </div>
+    </section>
+
+    <div class="w-divider" role="separator" aria-hidden="true">
+      <span class="line"></span>
+      <span class="mark"><img src="assets/wilder-mark.png" alt="Wilder leaf mark"></span>
+      <span class="line"></span>
+    </div>
+
+    <section class="block" id="contact">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Say hello</h2>
+      <p class="contact-text">
+        Questions, ideas, or just want to talk shop? I'd like to hear from you.
+      </p>
+      <a class="contact-email" href="mailto:teamwilder@wildercode.org">teamwilder@wildercode.org</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>&copy; 2026 WilderCode</span>
+    <div class="footer-links">
+      <a href="https://github.com/Wilder-Light-Studio" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:teamwilder@wildercode.org">teamwilder@wildercode.org</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
