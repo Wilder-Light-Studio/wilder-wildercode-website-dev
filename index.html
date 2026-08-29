@@ -200,28 +200,19 @@
     color: var(--ink);
   }
 
+  .project-card h3 .release-note {
+    font-family: var(--sans, inherit);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
   .project-card p {
     margin: 0;
     color: var(--ink-soft);
     font-size: 0.98rem;
-  }
-
-  .project-card .tag {
-    display: inline-block;
-    margin-top: 14px;
-    font-size: 0.76rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--leaf-mid);
-    border: 1px solid var(--leaf-light);
-    border-radius: 999px;
-    padding: 4px 12px;
-  }
-
-  .project-card .tag.live {
-    color: var(--orange);
-    border-color: var(--orange);
-    background: var(--orange-soft);
   }
 
   .project-card + .project-card { margin-top: 18px; }
@@ -229,10 +220,17 @@
   .project-card .visit {
     display: inline-block;
     margin-top: 14px;
-    margin-left: 10px;
+    padding: 10px 18px;
     font-size: 0.9rem;
-    color: var(--orange);
-    border-bottom: 1px solid var(--orange);
+    font-weight: 600;
+    color: #fff;
+    background: var(--orange);
+    border-radius: 6px;
+    transition: background 0.15s ease;
+  }
+
+  .project-card .visit:hover {
+    background: #c26a20;
   }
 
   .project-card .shot {
@@ -428,15 +426,16 @@
       <div class="eyebrow">Projects</div>
       <h2>What's growing</h2>
       <div class="project-card">
-        <img class="shot" src="assets/wilderrhymes-screenshot.png" alt="Wilder Rhymes rhyme dictionary showing search results for the word heart">
-        <h3>Wilder Rhymes</h3>
+        <a href="https://www.wilderrhymes.com" target="_blank" rel="noopener">
+          <img class="shot" src="assets/wilderrhymes-screenshot.png" alt="Wilder Rhymes rhyme dictionary showing search results for the word heart">
+        </a>
+        <h3>Wilder Rhymes <span class="release-note">— Early Release</span></h3>
         <p>
           A rhyming dictionary built for songwriters and lyricists — search by sound,
           not spelling, with every match graded by closure, stress, and part of
           speech, based on Pat Pattison's Berklee rhyme methodology.
         </p>
-        <span class="tag live">Early Release</span>
-        <a class="visit" href="https://www.wilderrhymes.com" target="_blank" rel="noopener">wilderrhymes.com &rarr;</a>
+        <a class="visit" href="https://www.wilderrhymes.com" target="_blank" rel="noopener">Visit Wilder Rhymes &rarr;</a>
       </div>
 
       <div class="project-card">
@@ -446,7 +445,6 @@
           here as they're ready to share — check back soon, or reach out below if
           you'd like to hear when something new lands.
         </p>
-        <span class="tag">More soon</span>
       </div>
     </section>
 
@@ -458,7 +456,6 @@
 
     <section class="block" id="contact">
       <div class="eyebrow">Get in touch</div>
-      <h2>Say hello</h2>
       <div class="contact-card">
         <p class="contact-text">
           Questions, ideas, or just want to talk shop? We'd like to hear from you.
