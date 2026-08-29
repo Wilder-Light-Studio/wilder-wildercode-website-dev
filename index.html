@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wilder | WilderCode</title>
 <meta name="description" content="WilderCode — serious tools for serious creatives.">
+<meta property="og:title" content="Wilder | WilderCode">
+<meta property="og:description" content="WilderCode — serious tools for serious creatives.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/wilder-logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wilder | WilderCode">
+<meta name="twitter:description" content="WilderCode — serious tools for serious creatives.">
+<meta name="twitter:image" content="assets/wilder-logo.png">
 <link rel="icon" type="image/png" href="assets/wilder-logo.png">
 <style>
   :root {
@@ -176,6 +184,13 @@
     border-radius: 10px;
     padding: 26px 28px;
     max-width: 62ch;
+    box-shadow: 0 1px 2px rgba(38,41,31,0.04);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 6px 18px rgba(38,41,31,0.07);
+    transform: translateY(-2px);
   }
 
   .project-card h3 {
@@ -287,6 +302,7 @@
     align-items: center;
     gap: 8px;
     flex: none;
+    max-width: 100%;
     font-family: var(--sans);
     font-weight: 600;
     font-size: 0.92rem;
@@ -294,6 +310,23 @@
     background: var(--leaf-dark);
     border-radius: 999px;
     padding: 11px 20px;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .contact-email:hover {
+    background: var(--leaf-mid);
+    box-shadow: 0 4px 12px rgba(92,122,61,0.3);
+    text-decoration: none;
+  }
+
+  @media (max-width: 400px) {
+    .contact-email {
+      font-size: 0.8rem;
+      padding: 10px 16px;
+      white-space: normal;
+      word-break: break-word;
+      text-align: center;
+    }
   }
 
   footer {
@@ -357,7 +390,7 @@
 
     <section class="block" id="principles">
       <div class="eyebrow">How we build</div>
-      <h2>Simple. Intuitive. Beautiful. Inviting.</h2>
+      <h2>Simple. Intuitive. Beautiful.</h2>
       <div class="principles">
         <div class="principle">
           <h3><span class="num">01</span> Simple</h3>
@@ -380,15 +413,6 @@
             Aesthetics matter. We hold to solid UI/UX principles across every
             design, so the tool aligns with the model — form following
             function, not fighting it.
-          </p>
-        </div>
-        <div class="principle">
-          <h3><span class="num">04</span> Inviting</h3>
-          <p>
-            We strive to meet people where they are: accessibility is
-            first-class, not an afterthought — greet newcomers,
-            accommodate masters, and meet every level in-between.
-            All are welcome, the door is always open.
           </p>
         </div>
       </div>
@@ -418,7 +442,7 @@
       <div class="project-card">
         <h3>New work is in progress</h3>
         <p>
-          I'm heads-down on the next release from the studio. Projects will appear
+          We're heads-down on the next release from the studio. Projects will appear
           here as they're ready to share — check back soon, or reach out below if
           you'd like to hear when something new lands.
         </p>
@@ -437,14 +461,14 @@
       <h2>Say hello</h2>
       <div class="contact-card">
         <p class="contact-text">
-          Questions, ideas, or just want to talk shop? I'd like to hear from you.
+          Questions, ideas, or just want to talk shop? We'd like to hear from you.
         </p>
         <a class="contact-email" href="mailto:teamwilder@wildercode.org">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 6h18v12H3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
             <path d="m3 7 9 6 9-6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
           </svg>
-          teamwilder@wildercode.org
+          Email Team Wilder
         </a>
       </div>
     </section>
@@ -453,7 +477,6 @@
   <footer>
     <span>&copy; 2026 Wilder. All rights reserved.</span>
     <div class="footer-links">
-      <a href="https://github.com/Wilder-Light-Studio" target="_blank" rel="noopener">GitHub</a>
       <a href="mailto:teamwilder@wildercode.org">teamwilder@wildercode.org</a>
     </div>
   </footer>
